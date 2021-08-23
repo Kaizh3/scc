@@ -1,0 +1,19 @@
+name: Check Spelling
+
+on:
+  push:
+    branches: [ LSW, PYH, LKZ, TKM, LJE ]
+  pull_request:
+    branches: [ gh-pages ]
+
+  workflow_dispatch:
+
+jobs:
+  spelling:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        ref: ${{ github.head_ref }}
+    - name: Check Spelling
+      uses: UnicornGlobal/spellcheck-github-actions@master
